@@ -19,6 +19,7 @@ services:
       - STORAGE_TYPE=redis
       - STORAGE_HOST=db
       - STORAGE_PORT=6379
+      - STORAGE_DB=0
     networks: 
       - internal
       - external
