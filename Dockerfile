@@ -18,7 +18,13 @@ LABEL name "haste-server"
 WORKDIR /app
 
 # Copy files from build-stage
-COPY --from=build-stage /tmp/build .
+COPY --from=build-stage /tmp/build/package*.json .
+COPY --from=build-stage /tmp/build/*.js .
+COPY --from=build-stage /tmp/build/lib ./lib
+COPY --from=build-stage /tmp/build/docker-entrypoint.* .
+COPY --from=build-stage /tmp/build/static ./static
+COPY --from=build-stage /tmp/build/node_modules ./node_modules
+COPY --from=build-stage /tmp/build/*.md .
 
 ENV NODE_ENV=production \
     # Storage Settings
