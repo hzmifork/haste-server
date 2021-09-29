@@ -1,4 +1,4 @@
-FROM node:lts-alpine as build-stage
+FROM ghcr.io/hazmi35/node:lts-dev-alpine as build-stage
 
 LABEL name "haste-server (build-stage)"
 
@@ -11,7 +11,7 @@ COPY . .
 RUN npm install --production
 
 # Get ready for production
-FROM node:lts-alpine
+FROM ghcr.io/hazmi35/node:lts-alpine
 
 LABEL name "haste-server"
 
