@@ -1,6 +1,6 @@
 networks:
   internet:
-    internal: false
+    external: false
   private:
     internal: true
 services:
