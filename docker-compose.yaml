@@ -3,6 +3,10 @@ networks:
     internal: false
   private:
     internal: true
+  traefik:
+    name: traefik-network
+    external: true
+
 services:
   db:
     image: "redis:alpine"
@@ -23,7 +27,15 @@ services:
     networks:
       - private
       - internet
-    ports:
-      - "7777:7777"
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.homepage.rule=Host(`bin.hzmi.xyz`)"
+      - "traefik.http.routers.homepage.entrypoints=web, websecure"
+      - "traefik.http.routers.homepage.tls=true"
+      - "traefik.http.routers.homepage.tls.certresolver=letsencrypt"
+      - "traefik.http.middlewares.cloudflare-true-ip.plugin.cloudflarewarp.disableDefault=false"
+      - "traefik.http.routers.homepage.middlewares=cloudflare-true-ip"
     restart: unless-stopped
+
 version: "3.0"
