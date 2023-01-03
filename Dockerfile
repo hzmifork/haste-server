@@ -68,7 +68,7 @@ ENV DOCUMENTS=about=./about.md
 
 EXPOSE ${PORT}/tcp
 STOPSIGNAL SIGINT
-ENTRYPOINT [ "tini", "--", "docker-entrypoint.sh" ]
+ENTRYPOINT [ "tini", "--", "/app/docker-entrypoint.sh" ]
 
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s \
     --retries=3 CMD node healthcheck.js
