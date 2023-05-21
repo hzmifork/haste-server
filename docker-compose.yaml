@@ -9,7 +9,7 @@ networks:
 
 services:
   db:
-    image: "redis:alpine"
+    image: docker.io/library/redis:alpine
     networks:
       - private
     restart: unless-stopped
