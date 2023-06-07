@@ -12,6 +12,8 @@ services:
     image: docker.io/library/redis:alpine
     networks:
       - private
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
     restart: unless-stopped
     volumes:
       - "./data:/data"
