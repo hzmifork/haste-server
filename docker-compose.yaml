@@ -35,9 +35,7 @@ services:
       - traefik.enable=true
       # Routings
       - traefik.http.routers.hastebin.entrypoints=websecure
-      - traefik.http.routers.hastebin.rule=Host(`bin.hzmi.xyz`)
-      # SNI and Domains TLS stuffs
-      - traefik.http.routers.hastebin.tls.domains[0].main=bin.hzmi.xyz
+      - 'traefik.http.routers.hastebin.rule=Host(`bin.hzmi.dev`) || Host(`bin.hzmi.xyz`)'
       # TLS Options
       - traefik.http.routers.hastebin.tls=true
       - traefik.http.routers.hastebin.tls.options=cloudflare@file
