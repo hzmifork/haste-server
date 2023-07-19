@@ -7,6 +7,9 @@ networks:
     name: traefik-network
     external: true
 
+volumes:
+  data:
+
 services:
   db:
     image: docker.io/library/redis:alpine
@@ -16,7 +19,7 @@ services:
       - com.centurylinklabs.watchtower.enable=true
     restart: unless-stopped
     volumes:
-      - "./data:/data"
+      - data:/data
   website:
     build: "."
     depends_on:
