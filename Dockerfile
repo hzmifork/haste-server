@@ -1,4 +1,4 @@
-FROM ghcr.io/hazmi35/node:16-dev-alpine as build-stage
+FROM ghcr.io/hazmi35/node:20-dev-alpine as build-stage
 
 LABEL name "haste-server (build-stage)"
 
@@ -11,7 +11,7 @@ COPY . .
 RUN npm ci --production
 
 # Get ready for production
-FROM ghcr.io/hazmi35/node:16-alpine
+FROM ghcr.io/hazmi35/node:20-alpine
 
 LABEL name "haste-server"
 
