@@ -44,7 +44,6 @@ services:
       - traefik.http.routers.hastebin.tls.options=cloudflare@file
       - traefik.http.routers.hastebin.tls.certresolver=letsencrypt
       # Middleware
-      - traefik.http.routers.hastebin.middlewares=cloudflare-real-ip@file, hsts
+      - traefik.http.routers.hastebin.middlewares=hsts
     restart: unless-stopped
   
-version: "3.0"
