@@ -12,7 +12,7 @@ volumes:
 
 services:
   db:
-    image: docker.io/library/redis:alpine
+    image: docker.io/valkey/valkey:8-alpine
     networks:
       - private
     labels:
